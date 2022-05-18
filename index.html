@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Etch-A-Sketch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+      container.classList.add('container');
+
+      const gridContainer = document.createElement('div');
+      container.appendChild(gridContainer);
+      gridContainer.classList.add('grid-container');
+
+      let Add = document.createDocumentFragment();
+
+      for (let i = 0; i < 16; i++) {
+      let newDiv = document.createElement('div');
+      newDiv.classList.add('grid-square');
+      newDiv.id = ('square ' + i);
+      gridContainer.appendChild(newDiv);
+}
+  </script>  
+</body>
+</html>
