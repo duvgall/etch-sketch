@@ -35,6 +35,13 @@ function removeGrid() {
   createGrid();
 }
 
+function removeGridForColor() {
+  while(gridContainer.firstChild) {
+    gridContainer.removeChild(gridContainer.lastChild);
+  }
+  createGrid();
+}
+
 function createGrid() {
   let input = prompt('Please enter a number between 4 and 100');
 gridContainer.style.gridTemplateColumns = `repeat(${input}, 1fr)`;
@@ -50,4 +57,13 @@ function makeBlack(e) {
   e.target.style.backgroundColor = "rgb(0,0,0)";
 }
 
+function makeRainbow(e) {
+  let r = Math.floor((Math.ramdom() * 255) + 1);
+  let g = Math.floor((Math.ramdom() * 255) + 1);
+  let b = Math.floor((Math.ramdom() * 255) + 1);
+  e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
+}
+
+
 gridContainer.addEventListener('mouseenter', makeBlack, {capture: true});
+gridContainer.addEventListener('mouseenter', makeRainbow, {capture: true});
