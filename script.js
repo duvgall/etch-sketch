@@ -1,6 +1,3 @@
-
-let gridSquare;
-
 const container = document.createElement('div');
 document.body.appendChild(container);
 container.classList.add('container');
@@ -12,27 +9,24 @@ gridContainer.classList.add('grid-container');
 const sliderContainer = document.createElement('div');
 container.appendChild(sliderContainer);
 sliderContainer.classList.add('slide-container');
-
+/*
 const slider = document.createElement('input');
 slider.type = 'range';
 slider.min = 4;
 slider.max = 100;
 slider.classList.add('slider');
 sliderContainer.appendChild(slider);
-
-let Add = document.createDocumentFragment();
-
-for (let i = 0; i < 16; i++) {
-let gridSquare = document.createElement('div');
-gridSquare.classList.add('grid-square');
-gridSquare.id = ('square ' + i);
-gridContainer.appendChild(gridSquare);
-};
-/*
-gridSquare.addEventListener("mouseenter", e => {
-  e.style.backgroundColor = 'black';
-}  )
 */
+
+gridContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+for(let i = 0; i < 16; i++) {
+  let gridSquare = document.createElement('div');
+  gridSquare.classList.add('grid-square');
+  gridSquare.id = ('square ' + i);
+  gridContainer.appendChild(gridSquare);
+}
+
+
 function removeGrid() {
   while(gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.lastChild);
@@ -42,11 +36,17 @@ function removeGrid() {
 
 function createGrid() {
   let input = prompt('Please enter a number between 4 and 100');
-
-  for(let i = 0; i < input; i++) {
+gridContainer.style.gridTemplateColumns = `repeat(${input}, 1fr)`;
+  for(let i = 0; i < input * input; i++) {
     let gridSquare = document.createElement('div');
     gridSquare.classList.add('grid-square');
     gridSquare.id = ('square ' + i);
     gridContainer.appendChild(gridSquare);
   }
 }
+
+function makeBlack(e) {
+  e.target.style.backgroundColor = "rgb(0,0,0)";
+}
+
+gridContainer.addEventListener('mouseenter', makeBlack, {capture: true});
