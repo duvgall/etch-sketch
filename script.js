@@ -6,10 +6,11 @@ const gridContainer = document.createElement('div');
 container.appendChild(gridContainer);
 gridContainer.classList.add('grid-container');
 
+/*
 const sliderContainer = document.createElement('div');
 container.appendChild(sliderContainer);
 sliderContainer.classList.add('slide-container');
-/*
+
 const slider = document.createElement('input');
 slider.type = 'range';
 slider.min = 4;
